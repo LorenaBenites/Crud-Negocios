@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ventasModelStoreContainer" CdmEntityContainer="ventasEntities">
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="ventasModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="idcat" ColumnName="idcat" />
+          <ScalarProperty Name="nomcat" ColumnName="nomcat" />
+          <ScalarProperty Name="descat" ColumnName="descat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="ventasModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="idcli" ColumnName="idcli" />
+          <ScalarProperty Name="nomcli" ColumnName="nomcli" />
+          <ScalarProperty Name="apecli" ColumnName="apecli" />
+          <ScalarProperty Name="dnicli" ColumnName="dnicli" />
+          <ScalarProperty Name="telcli" ColumnName="telcli" />
+          <ScalarProperty Name="corcli" ColumnName="corcli" />
+          <ScalarProperty Name="fechnac" ColumnName="fechnac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detpedido">
+      <EntityTypeMapping TypeName="ventasModel.detpedido">
+        <MappingFragment StoreEntitySet="detpedido">
+          <ScalarProperty Name="idped" ColumnName="idped" />
+          <ScalarProperty Name="idpro" ColumnName="idpro" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pedido">
+      <EntityTypeMapping TypeName="ventasModel.pedido">
+        <MappingFragment StoreEntitySet="pedido">
+          <ScalarProperty Name="idped" ColumnName="idped" />
+          <ScalarProperty Name="idcli" ColumnName="idcli" />
+          <ScalarProperty Name="fecped" ColumnName="fecped" />
+          <ScalarProperty Name="totped" ColumnName="totped" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="ventasModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="idpro" ColumnName="idpro" />
+          <ScalarProperty Name="nompro" ColumnName="nompro" />
+          <ScalarProperty Name="prepro" ColumnName="prepro" />
+          <ScalarProperty Name="stockpro" ColumnName="stockpro" />
+          <ScalarProperty Name="fvpro" ColumnName="fvpro" />
+          <ScalarProperty Name="idcat" ColumnName="idcat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ventasModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

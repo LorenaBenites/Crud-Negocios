@@ -1,0 +1,66 @@
+﻿@model waSemana11.cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apecli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apecli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dnicli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dnicli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.corcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.corcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechnac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechnac)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idcli }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

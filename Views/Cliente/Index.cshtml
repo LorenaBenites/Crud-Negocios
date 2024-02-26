@@ -1,0 +1,75 @@
+﻿@model IEnumerable<waSemana11.cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-center">
+
+    <h2 class="text-center">Listado de Clientes</h2>
+    <p>
+        @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>
+<table class="table table-striped text-center"">
+    <thead class="bg-black text-light">
+        <tr>
+            <th>
+                NOMBRE
+            </th>
+            <th>
+               APELLIDO
+            </th>
+            <th>
+               DNI
+            </th>
+            <th>
+              TELEFONO
+            </th>
+            <th>
+               CORREO ELECTRONICO
+            </th>
+            <th>
+               NACIMIENTO
+            </th>
+            <th>Editar</th>
+            <th>Detalles</th>
+            <th> Eliminar</th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apecli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dnicli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.corcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechnac)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.idcli }, new { @class = "btn btn-success" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.idcli }, new { @class = "btn btn-warning" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.idcli }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

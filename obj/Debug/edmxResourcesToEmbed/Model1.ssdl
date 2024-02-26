@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ventasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="idcat" />
+    </Key>
+    <Property Name="idcat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomcat" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descat" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="idcli" />
+    </Key>
+    <Property Name="idcli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomcli" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apecli" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dnicli" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="telcli" Type="varchar" MaxLength="15" />
+    <Property Name="corcli" Type="varchar" MaxLength="50" />
+    <Property Name="fechnac" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detpedido">
+    <Key>
+      <PropertyRef Name="idped" />
+      <PropertyRef Name="idpro" />
+    </Key>
+    <Property Name="idped" Type="int" Nullable="false" />
+    <Property Name="idpro" Type="int" Nullable="false" />
+    <Property Name="precio" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="idped" />
+    </Key>
+    <Property Name="idped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idcli" Type="int" Nullable="false" />
+    <Property Name="fecped" Type="date" Nullable="false" />
+    <Property Name="totped" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="idpro" />
+    </Key>
+    <Property Name="idpro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nompro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prepro" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="stockpro" Type="int" Nullable="false" />
+    <Property Name="fvpro" Type="date" Nullable="false" />
+    <Property Name="idcat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="fkcat">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="idcat" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="idcat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkcli">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idcli" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="idcli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkped">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+    <End Role="detpedido" Type="Self.detpedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="idped" />
+      </Principal>
+      <Dependent Role="detpedido">
+        <PropertyRef Name="idped" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkpro">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="detpedido" Type="Self.detpedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="idpro" />
+      </Principal>
+      <Dependent Role="detpedido">
+        <PropertyRef Name="idpro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ventasModelStoreContainer">
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="comercio" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="comercio" store:Type="Tables" />
+    <EntitySet Name="detpedido" EntityType="Self.detpedido" Schema="comercio" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="comercio" store:Type="Tables" />
+    <EntitySet Name="producto" EntityType="Self.producto" Schema="comercio" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fkcat" Association="Self.fkcat">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="fkcli" Association="Self.fkcli">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="fkped" Association="Self.fkped">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="detpedido" EntitySet="detpedido" />
+    </AssociationSet>
+    <AssociationSet Name="fkpro" Association="Self.fkpro">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="detpedido" EntitySet="detpedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

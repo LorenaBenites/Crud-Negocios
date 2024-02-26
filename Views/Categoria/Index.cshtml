@@ -1,0 +1,57 @@
+﻿@model IEnumerable<waSemana11.categoria>
+
+@{
+    ViewBag.Title = "Categoria";
+}
+<div class="text-center">
+
+    <h2 class="text-center">Listado de Categorias</h2>
+    <p>
+        @Html.ActionLink("Crear Categoria", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>
+<table class="table table-striped text-center">
+    <thead class="bg-black text-light">
+        <tr >
+            <th>
+                NOMBRE DE CATEGORIA
+            </th>
+            <th>
+                DESCRIPCION
+            </th>
+            <th>
+                EDITAR
+            </th>
+            <th>
+                DETALLES
+            </th>
+            <th>
+                ELIMINAR
+            </th>
+        </tr>
+    </thead>
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomcat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descat)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idcat } , new {@class="btn btn-success" }) 
+        
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.idcat }, new { @class = "btn btn-warning" }) 
+            
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.idcat }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
